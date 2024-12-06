@@ -1,0 +1,22 @@
+# Backend Service Configuration
+backend:
+  image: shreybatra/sample-backend
+  port: 8000
+  replicas: 1
+  env:
+    REDIS_URI: redis://redis-svc:6379
+
+# Frontend Service Configuration
+frontend:
+  image: shreybatra/sample-frontend
+  port: 5173
+  nodePort: 31000
+  replicas: 1
+  env:
+    BACKEND_URL: http://backend-svc:8000
+
+# Redis Service Configuration
+redis:
+  image: redis
+  port: 6379
+  replicas: 1
